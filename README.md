@@ -1,44 +1,15 @@
-# Head elements example
+# Test Case for Next.js Issue #10183
 
-For every page you can inject elements into the page head. This way you can add stylesheets, JS scripts, meta tags, a custom title or whatever you think is convenient to add inside the `<head>` of your page.
+This repo shows an example of the Next.js issue [Can't provide multiple meta tags with the same name (#10183)](https://github.com/vercel/next.js/issues/10183).
 
-This example shows in `pages/index.js` how to add a title and a couple of meta tags.
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/head-elements)
-
-## How to use
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+It was created by first initializing a new Next.js project based on the head-elements example:
 
 ```bash
-npx create-next-app --example head-elements head-elements-app
-# or
-yarn create next-app --example head-elements head-elements-app
+$ yarn create next-app --example head-elements next-meta-tag-issue
 ```
 
-### Download manually
+Then modifing `pages/index.js` to render 2 meta tags with the same name but different keys inside the Head component.
 
-Download the example:
+## Expected behavior
 
-```bash
-curl https://codeload.github.com/vercel/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/head-elements
-cd head-elements
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+The page `head` should contain 4 meta tags with the name "citation_author", one for each author listed in the `authorNames` array.
